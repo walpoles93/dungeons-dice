@@ -1,4 +1,5 @@
-# Dungeon Dice 
+# Dungeons & Dice 
+A dice-rolling app for use with dice-based RPG systems, which allows the user to create and save custom dice sets.
 
 - Install `expo-cli`
 
