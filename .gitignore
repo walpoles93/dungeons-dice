@@ -1,2 +1,5 @@
 node_modules/
 .expo/
+
+# Used for debugging; final project should have no need for html files
+*.html
