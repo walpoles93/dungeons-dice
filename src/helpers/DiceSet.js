@@ -1,11 +1,12 @@
 export default class DiceSet
 {
     // TODO enable dice argument to be either array of dice or single die
-    constructor(dice = [])
+    constructor(dice = [], setName = "Custom dice set")
     {
         // TODO validate dice argument before assigning property
         this.dice = dice;
-        Object.freeze(this);
+        this.setName = setName;
+        Object.seal(this);
     }
     
     addDice(dice)
@@ -20,5 +21,10 @@ export default class DiceSet
     removeDie(index)
     {
         this.dice.splice(index, 1);
+    }
+    
+    rename(setName)
+    {
+        this.setName = setName;
     }
 }
