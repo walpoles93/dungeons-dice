@@ -7,6 +7,7 @@ export default class Die {
     } else {
       throw new TypeError(`Sides must be a integer number of ${VALID_SIDES.join()}`);
     }
+    this.rolls = [];
     Object.freeze(this);
   }
 
@@ -18,6 +19,8 @@ export default class Die {
   }
 
   roll() {
-    return Math.floor(Math.random() * this.sides) + 1;
+    const value = Math.floor(Math.random() * this.sides) + 1;
+    this.rolls.push(value);
+    return value;
   }
 }
