@@ -27,4 +27,13 @@ export default class DiceSet
     {
         this.setName = setName;
     }
+    
+    rollDice()
+    {
+        var rolls = [];
+        this.dice.forEach(function(die){
+            rolls.push(die.roll());
+        });
+        return rolls;
+    }
 }
