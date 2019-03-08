@@ -1,12 +1,8 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import Die from '../helpers/Die';
+import { StyleSheet, View } from 'react-native';
+import Card from './Card';
+import Deck from './Deck';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,22 +16,19 @@ const styles = StyleSheet.create({
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.die = new Die(6);
-    this.state = {
-      roll: this.die.roll(),
-    };
+    this.state = {};
   }
 
   render() {
-    const { roll } = this.state;
     return (
       <View style={styles.container}>
-        <Text>{roll}</Text>
-        <Button
-          onPress={() => this.setState({ roll: this.die.roll() })}
-          title="Roll!"
-          accessibilityLabel="Click to roll the die"
-        />
+        <Deck>
+          <Card name="d6" roll={1} type="slashing" />
+          <Card name="d6" roll={2} type="slashing" />
+          <Card name="d6" roll={3} type="slashing" />
+          <Card name="d6" roll={4} type="slashing" />
+          <Card name="d6" roll={5} type="slashing" />
+        </Deck>
       </View>
     );
   }
