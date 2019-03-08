@@ -5,7 +5,6 @@ import { StyleSheet, View } from 'react-native';
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'flex-start',
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
