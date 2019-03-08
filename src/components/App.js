@@ -1,6 +1,7 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
+import Button from './Button';
 import Card from './Card';
 import Deck from './Deck';
 
@@ -29,6 +30,7 @@ class App extends React.Component {
           <Card name="d6" roll={4} type="slashing" />
           <Card name="d6" roll={5} type="slashing" />
         </Deck>
+        <Button title="ROLL" onPress={() => Alert.alert('Rolled')} />
       </View>
     );
   }
