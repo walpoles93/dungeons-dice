@@ -1,7 +1,7 @@
 /* eslint-disable no-unneeded-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -50,6 +50,7 @@ Content.defaultProps = {
 
 const Card = ({ name, roll, type }) => (
   <View style={styles.wrapper}>
+    <StatusBar hidden />
     <Content backgroundColor="#039BE5" color="#FAFAFA" fontSize={24} >
       {name}
     </Content>
