@@ -43,6 +43,13 @@ class App extends React.Component {
     this.setState({ dice: [...dice, new Die()] });
   }
 
+  handleDelete(e, id) {
+    const { dice } = this.state;
+    this.setState({
+      dice: dice.filter(die => die.id !== id),
+    });
+  }
+
   handleRoll() {
     const { dice } = this.state;
     dice.forEach(die => die.roll());
@@ -52,7 +59,11 @@ class App extends React.Component {
   render() {
     const { dice } = this.state;
     const cards = dice.map(die => (
-      <Card key={die.id} onPress={() => Alert.alert('Card pressed...')}>
+      <Card
+        key={die.id}
+        onPress={() => Alert.alert('Card pressed...')}
+        onLongPress={e => this.handleDelete(e, die.id)}
+      >
         <Card.Title text={die.name} />
         <Card.Content text={die.lastRoll() ? die.lastRoll() : '-'} />
         <Card.Meta text={die.type} />
