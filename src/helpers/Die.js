@@ -18,7 +18,7 @@ export default class Die {
     if (rolls.length === 0) {
       return 0;
     }
-    return rolls.slice(rolls.length - 1);
+    return rolls.slice(rolls.length - 1)[0];
   }
 
   roll() {
