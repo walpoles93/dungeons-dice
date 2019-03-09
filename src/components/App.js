@@ -1,6 +1,11 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import Button from './Button';
 import Card from './Card';
 import Deck from './Deck';
