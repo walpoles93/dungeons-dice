@@ -1,10 +1,10 @@
-/* eslint-disable no-unneeded-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableHighlight,
   View,
 } from 'react-native';
 
@@ -24,7 +24,25 @@ const styles = StyleSheet.create({
   },
 });
 
-const Content = ({
+const Card = ({ children, onPress }) => (
+  <TouchableHighlight onPress={onPress}>
+    <View style={styles.wrapper}>
+      <StatusBar hidden />
+      {children}
+    </View>
+  </TouchableHighlight>
+);
+
+Card.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  onPress: PropTypes.func,
+};
+
+Card.defaultProps = {
+  onPress: () => {},
+};
+
+const TextWrapper = ({
   backgroundColor,
   color,
   children,
@@ -38,7 +56,7 @@ const Content = ({
   </View>
 );
 
-Content.propTypes = {
+TextWrapper.propTypes = {
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -46,38 +64,41 @@ Content.propTypes = {
   fontWeight: PropTypes.string,
 };
 
-Content.defaultProps = {
+TextWrapper.defaultProps = {
   backgroundColor: '#FAFAFA',
   color: '#212121',
   fontSize: 18,
   fontWeight: '400',
 };
 
-const Card = ({ name, roll, type }) => (
-  <View style={styles.wrapper}>
-    <StatusBar hidden />
-    <Content backgroundColor="#039BE5" color="#FAFAFA" fontSize={24}>
-      {name}
-    </Content>
-    <Content backgroundColor="#FAFAFA" color="#212121" fontSize={36} fontWeight="bold">
-      {roll ? roll : '-'}
-    </Content>
-    <Content backgroundColor="#4FC3F7" color="#FAFAFA">
-      {type}
-    </Content>
-  </View>
+Card.Title = ({ text }) => (
+  <TextWrapper backgroundColor="#039BE5" color="#FAFAFA" fontSize={24}>
+    {text}
+  </TextWrapper>
 );
 
-Card.propTypes = {
-  name: PropTypes.string,
-  roll: PropTypes.number,
-  type: PropTypes.string,
+Card.Title.propTypes = {
+  text: PropTypes.string.isRequired,
 };
 
-Card.defaultProps = {
-  name: 'd?',
-  roll: 0,
-  type: '???',
+Card.Content = ({ text }) => (
+  <TextWrapper backgroundColor="#FAFAFA" color="#212121" fontSize={36} fontWeight="bold">
+    {text}
+  </TextWrapper>
+);
+
+Card.Content.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+Card.Meta = ({ text }) => (
+  <TextWrapper backgroundColor="#4FC3F7" color="#FAFAFA">
+    {text}
+  </TextWrapper>
+);
+
+Card.Meta.propTypes = {
+  text: PropTypes.string.isRequired,
 };
 
 export default Card;
