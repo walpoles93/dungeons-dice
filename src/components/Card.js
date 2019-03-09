@@ -88,7 +88,7 @@ Card.Content = ({ text }) => (
 );
 
 Card.Content.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 Card.Meta = ({ text }) => (
