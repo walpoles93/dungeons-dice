@@ -35,11 +35,19 @@ class App extends React.Component {
       ],
     };
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleRoll = this.handleRoll.bind(this);
   }
 
   handleAdd() {
     const { dice } = this.state;
     this.setState({ dice: [...dice, new Die()] });
+  }
+
+  handleRoll() {
+    const { dice } = this.state;
+    dice.forEach(die => die.roll());
+    // TODO handle in redux
+    this.setState({});
   }
 
   render() {
@@ -61,7 +69,7 @@ class App extends React.Component {
               <Card.Content text="+" />
             </Card>
           </Deck>
-          <Button title="ROLL" onPress={() => Alert.alert('Rolled')} />
+          <Button title="ROLL" onPress={this.handleRoll} />
         </ScrollView>
       </View>
     );
