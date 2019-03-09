@@ -18,7 +18,7 @@ const Deck = ({ children }) => (
 );
 
 Deck.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 };
 
 export default Deck;
