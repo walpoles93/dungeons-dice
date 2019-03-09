@@ -46,8 +46,7 @@ class App extends React.Component {
   handleRoll() {
     const { dice } = this.state;
     dice.forEach(die => die.roll());
-    // TODO handle in redux
-    this.setState({});
+    this.forceUpdate();
   }
 
   render() {
