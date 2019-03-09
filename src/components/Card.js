@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Card = ({ children, onPress }) => (
-  <TouchableHighlight onPress={onPress}>
+const Card = ({ children, onPress, onLongPress }) => (
+  <TouchableHighlight onPress={onPress} onLongPress={onLongPress}>
     <View style={styles.wrapper}>
       <StatusBar hidden />
       {children}
@@ -36,10 +36,12 @@ const Card = ({ children, onPress }) => (
 Card.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
 };
 
 Card.defaultProps = {
   onPress: () => {},
+  onLongPress: () => {},
 };
 
 const TextWrapper = ({
