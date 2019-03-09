@@ -1,6 +1,6 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import Button from './Button';
 import Card from './Card';
 import Deck from './Deck';
@@ -8,8 +8,10 @@ import Die from '../helpers/Die';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#FAFAFA',
+    flex: 1,
+  },
+  scrollContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -47,13 +49,15 @@ class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Deck>
-          {cards}
-          <Card onPress={this.handleAdd}>
-            <Card.Content text="+" />
-          </Card>
-        </Deck>
-        <Button title="ROLL" onPress={() => Alert.alert('Rolled')} />
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <Deck>
+            {cards}
+            <Card onPress={this.handleAdd}>
+              <Card.Content text="+" />
+            </Card>
+          </Deck>
+          <Button title="ROLL" onPress={() => Alert.alert('Rolled')} />
+        </ScrollView>
       </View>
     );
   }
