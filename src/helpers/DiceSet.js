@@ -1,24 +1,22 @@
 export default class DiceSet
 {
     // TODO enable dice argument to be either array of dice or single die
-    constructor(dice = [], name = "Custom dice set")
-    {
+    constructor(dice = [], name = "Custom dice set") {
         // TODO validate dice argument before assigning property
         this.dice = dice;
-        this.name = name;
+        this._name = name;
         Object.seal(this);
     }
     
     get setName() {
-        return this.name;
+        return this._name;
     }
     
-    set setName(name){
-        this.name = name;
+    set setName(name) {
+        this._name = name;
     }
     
-    addDice(dice)
-    {
+    addDice(dice) {
         // TODO push entire array at once(?)
         for(let i = 0; i < dice.length; i++)
         {
@@ -26,15 +24,13 @@ export default class DiceSet
         }
     }
     
-    removeDie(die)
-    {
+    removeDie(die) {
         this.dice.splice(this.dice.indexOf(die), 1);
     }
         
-    rollDice()
-    {
+    rollDice() {
         let rolls = [];
-        this.dice.forEach(function(die){
+        this.dice.forEach(function(die) {
             rolls.push(die.roll());
         });
         return rolls;
