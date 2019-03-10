@@ -1,5 +1,4 @@
-export default class DiceSet
-{
+export default class DiceSet {
     // TODO enable dice argument to be either array of dice or single die
     constructor(dice = [], name = "Custom dice set") {
         // TODO validate dice argument before assigning property
@@ -17,11 +16,7 @@ export default class DiceSet
     }
     
     addDice(dice) {
-        // TODO push entire array at once(?)
-        for(let i = 0; i < dice.length; i++)
-        {
-            this.dice.push(dice[i]);
-        }
+        this.dice = this.dice.concat(dice);
     }
     
     removeDie(die) {
