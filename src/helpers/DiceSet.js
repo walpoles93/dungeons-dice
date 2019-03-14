@@ -20,12 +20,9 @@ export default class DiceSet {
     this._name = name;
   }
 
-  addDice(dice) {
-    // TODO check input to addDice
-    const diceObjs = dice.map(({ sides, type }) => (
-      new Die(sides, type)
-    ));
-    this.dice = this.dice.concat(diceObjs);
+  addDie(sides, type) {
+    // TODO validate parameters?
+    this.dice.push(new Die(sides, type));
   }
 
   removeDie(id) {
