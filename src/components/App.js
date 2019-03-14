@@ -9,7 +9,7 @@ import {
 import Button from './Button';
 import Card from './Card';
 import Deck from './Deck';
-import Die from '../helpers/Die';
+import DiceSet from '../helpers/DiceSet';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,12 +26,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dice: [
-        new Die(),
-        new Die(),
-        new Die(),
-        new Die(),
-        new Die(),
+      diceSets: [
+        new DiceSet([0, 0, 0, 0]),
       ],
     };
     this.handleAdd = this.handleAdd.bind(this);
@@ -39,25 +35,27 @@ class App extends React.Component {
   }
 
   handleAdd() {
-    const { dice } = this.state;
-    this.setState({ dice: [...dice, new Die()] });
+    const { diceSets } = this.state;
+    diceSets[0].addDice([{}]);
+    this.forceUpdate();
   }
 
   handleDelete(e, id) {
-    const { dice } = this.state;
-    this.setState({
-      dice: dice.filter(die => die.id !== id),
-    });
+    const { diceSets } = this.state;
+    diceSets[0].removeDie(id);
+    this.forceUpdate();
   }
 
   handleRoll() {
-    const { dice } = this.state;
+    const { diceSets } = this.state;
+    const { dice } = diceSets[0];
     dice.forEach(die => die.roll());
     this.forceUpdate();
   }
 
   render() {
-    const { dice } = this.state;
+    const { diceSets } = this.state;
+    const { dice } = diceSets[0];
     const cards = dice.map(die => (
       <Card
         key={die.id}
