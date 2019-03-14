@@ -29,7 +29,7 @@ export default class DiceSet {
   }
 
   removeDie(id) {
-    this.dice.splice(this.dice[id], 1);
+    this.dice = this.dice.filter(die => die.id !== id);
   }
 
   rollDice() {
