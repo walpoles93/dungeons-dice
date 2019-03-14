@@ -28,8 +28,8 @@ export default class DiceSet {
     this.dice = this.dice.concat(diceObjs);
   }
 
-  removeDie(die) {
-    this.dice.splice(this.dice.indexOf(die), 1);
+  removeDie(id) {
+    this.dice.splice(this.dice[id], 1);
   }
 
   rollDice() {
