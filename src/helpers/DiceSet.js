@@ -21,7 +21,7 @@ export default class DiceSet {
   }
 
   addDice(dice) {
-    //TODO check input to addDice
+    // TODO check input to addDice
     const diceObjs = dice.map(({ sides, type }) => (
       new Die(sides, type)
     ));
