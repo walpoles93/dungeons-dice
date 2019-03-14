@@ -1,12 +1,14 @@
 import uuid from 'uuid/v1';
+import Die from './Die';
 
 export default class DiceSet {
   // TODO enable dice argument to be either array of dice or single die
   constructor(dice = [], name = 'Custom dice set') {
     this.id = uuid();
     // TODO validate dice argument before assigning property
-    this.dice = dice;
     this._name = name;
+    this.dice = [];
+    this.addDice(dice);
     Object.seal(this);
   }
 
@@ -19,7 +21,11 @@ export default class DiceSet {
   }
 
   addDice(dice) {
-    this.dice = this.dice.concat(dice);
+    //TODO check input to addDice
+    const diceObjs = dice.map(({ sides, type }) => (
+      new Die(sides, type)
+    ));
+    this.dice = this.dice.concat(diceObjs);
   }
 
   removeDie(die) {
