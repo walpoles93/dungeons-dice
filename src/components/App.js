@@ -1,13 +1,7 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import {
-  Alert,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Button from './Button';
-import Card from './Card';
 import Deck from './Deck';
 import DiceSet from '../helpers/DiceSet';
 
@@ -31,6 +25,7 @@ class App extends React.Component {
       ],
     };
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleRoll = this.handleRoll.bind(this);
   }
 
@@ -56,27 +51,12 @@ class App extends React.Component {
   render() {
     const { diceSets } = this.state;
     const { dice } = diceSets[0];
-    const cards = dice.map(die => (
-      <Card
-        key={die.id}
-        onPress={() => Alert.alert('Card pressed...')}
-        onLongPress={e => this.handleDelete(e, die.id)}
-      >
-        <Card.Title text={die.name} />
-        <Card.Content text={die.lastRoll() ? die.lastRoll() : '-'} />
-        <Card.Meta text={die.type} />
-      </Card>
-    ));
+    const handlers = { handleAdd: this.handleAdd, handleDelete: this.handleDelete };
 
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <Deck>
-            {cards}
-            <Card onPress={this.handleAdd}>
-              <Card.Content text="+" />
-            </Card>
-          </Deck>
+          <Deck dice={dice} {...handlers} />
           <Button title="ROLL" onPress={this.handleRoll} />
         </ScrollView>
       </View>
