@@ -36,7 +36,7 @@ class App extends React.Component {
 
   handleAdd() {
     const { diceSets } = this.state;
-    diceSets[0].addDice([{}]);
+    diceSets[0].addDie();
     this.forceUpdate();
   }
 
