@@ -2,13 +2,11 @@ import uuid from 'uuid/v1';
 import Die from './Die';
 
 export default class DiceSet {
-  // TODO enable dice argument to be either array of dice or single die
-  constructor(dice = [], name = 'Custom dice set') {
+  // TODO validate constructor
+  constructor(name = 'Custom dice set') {
     this.id = uuid();
-    // TODO validate dice argument before assigning property
     this._name = name;
     this.dice = [];
-    this.addDice(dice);
     Object.seal(this);
   }
 
