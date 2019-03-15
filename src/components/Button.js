@@ -15,19 +15,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ onPress, title }) => (
-  <TouchableHighlight onPress={onPress} style={styles.button}>
+const Button = ({ onPress, onLongPress, title }) => (
+  <TouchableHighlight onPress={onPress} onLongPress={onLongPress} style={styles.button}>
     <Text style={styles.text}>{title}</Text>
   </TouchableHighlight>
 );
 
 Button.propTypes = {
   onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
   title: PropTypes.string,
 };
 
 Button.defaultProps = {
   onPress: () => {},
+  onLongPress: () => {},
   title: 'Press',
 };
 
