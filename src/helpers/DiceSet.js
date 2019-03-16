@@ -6,7 +6,7 @@ export default class DiceSet {
   constructor(name = 'Custom dice set') {
     this._id = uuid();
     this._name = name;
-    this.dice = [];
+    this._dice = [];
     this.validateConstructor();
     Object.seal(this);
   }
@@ -23,24 +23,28 @@ export default class DiceSet {
     this._name = name;
   }
 
+  get dice() {
+      return this._dice;
+  }
+    
   addDie(sides, type) {
     // TODO validate parameters?
-    this.dice.push(new Die(sides, type));
+    this._dice.push(new Die(sides, type));
   }
 
   removeDie(id) {
-    this.dice = this.dice.filter(die => die.id !== id);
+    this._dice = this._dice.filter(die => die.id !== id);
   }
   
   getDieProperty(id, property) {
-    const die = this.dice.find(die => die.id === id);
+    const die = this._dice.find(die => die.id === id);
     return die[property];
   }  
 
   rollDice() {
     // TODO consider removing rolls array
     const rolls = [];
-    this.dice.forEach((die) => {
+    this._dice.forEach((die) => {
       rolls.push(die.roll());
     });
     return rolls;
@@ -49,7 +53,7 @@ export default class DiceSet {
   sumLastRolls() {
     // TODO ensure modifier is included
     let sum = 0;
-    this.dice.forEach((die) => {
+    this._dice.forEach((die) => {
       sum+= die.lastRoll();
     });
     return sum;
