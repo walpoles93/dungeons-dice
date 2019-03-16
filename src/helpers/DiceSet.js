@@ -4,13 +4,17 @@ import Die from './Die';
 export default class DiceSet {
   // TODO validate constructor
   constructor(name = 'Custom dice set') {
-    this.id = uuid();
+    this._id = uuid();
     this._name = name;
     this.dice = [];
     this.validateConstructor();
     Object.seal(this);
   }
 
+  get id() {
+    returh this._id;
+  }
+    
   get setName() {
     return this._name;
   }
