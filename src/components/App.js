@@ -45,22 +45,19 @@ class App extends React.Component {
   }
 
   handleAddDie() {
-    const { activeSetId, diceSets } = this.state;
-    const set = diceSets.find(diceSet => diceSet.id === activeSetId);
+    const set = this.getActiveSet();
     set.addDie();
     this.forceUpdate();
   }
 
   handleDeleteDie(e, id) {
-    const { activeSetId, diceSets } = this.state;
-    const set = diceSets.find(diceSet => diceSet.id === activeSetId);
+    const set = this.getActiveSet();
     set.removeDie(id);
     this.forceUpdate();
   }
 
   handleRollDice() {
-    const { activeSetId, diceSets } = this.state;
-    const set = diceSets.find(diceSet => diceSet.id === activeSetId);
+    const set = this.getActiveSet();
     set.rollDice();
     this.forceUpdate();
   }
@@ -83,9 +80,14 @@ class App extends React.Component {
     this.setState({ diceSets: newSets });
   }
 
+  getActiveSet() {
+      const { activeSetId, diceSets } = this.state;
+      return diceSets.find(diceSet => diceSet.id === activeSetId);
+  }
+    
   render() {
     const { activeSetId, diceSets } = this.state;
-    const activeDice = diceSets.find(diceSet => diceSet.id === activeSetId).dice;
+    const activeDice = this.getActiveSet().dice;
     const handlers = { handleAdd: this.handleAddDie, handleDelete: this.handleDeleteDie };
     const setSelectors = diceSets.map(diceSet => (
       <Button
