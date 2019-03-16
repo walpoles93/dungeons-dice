@@ -12,7 +12,7 @@ export default class DiceSet {
   }
 
   get id() {
-    returh this._id;
+    return this._id;
   }
     
   get setName() {
@@ -24,7 +24,7 @@ export default class DiceSet {
   }
 
   get dice() {
-      return this._dice;
+    return this._dice;
   }
     
   addDie(sides, type) {
