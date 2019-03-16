@@ -26,8 +26,14 @@ export default class DiceSet {
   removeDie(id) {
     this.dice = this.dice.filter(die => die.id !== id);
   }
+  
+  getDieProperty(id, property) {
+    const die = this.dice.find(die => die.id === id);
+    return die[property];
+  }  
 
   rollDice() {
+    // TODO consider removing rolls array
     const rolls = [];
     this.dice.forEach((die) => {
       rolls.push(die.roll());
