@@ -40,4 +40,13 @@ export default class DiceSet {
     });
     return rolls;
   }
+    
+  sumLastRolls() {
+    // TODO ensure modifier is included
+    let sum = 0;
+    this.dice.forEach((die) => {
+      sum+= die.lastRoll();
+    });
+      return sum;
+  }
 }
