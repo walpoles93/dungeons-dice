@@ -7,6 +7,7 @@ export default class DiceSet {
     this.id = uuid();
     this._name = name;
     this.dice = [];
+    this.validateConstructor();
     Object.seal(this);
   }
 
@@ -47,6 +48,12 @@ export default class DiceSet {
     this.dice.forEach((die) => {
       sum+= die.lastRoll();
     });
-      return sum;
+    return sum;
+  }
+    
+  validateConstructor() {
+    if (typeof this._name !== 'string') {
+      throw new TypeError('typeof _name must be string');
+    }
   }
 }
