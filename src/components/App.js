@@ -58,11 +58,10 @@ class App extends React.Component {
     this.forceUpdate();
   }
 
-  handleRollDie() {
+  handleRollDice() {
     const { activeSetId, diceSets } = this.state;
     const set = diceSets.filter(diceSet => diceSet.id === activeSetId)[0];
-    const { dice } = set;
-    dice.forEach(die => die.roll());
+    set.rollDice();
     this.forceUpdate();
   }
 
@@ -105,7 +104,7 @@ class App extends React.Component {
         </View>
         <View style={styles.decks}>
           <Deck dice={activeDice} {...handlers} />
-          <Button title="ROLL" onPress={this.handleRollDie} />
+          <Button title="ROLL" onPress={this.handleRollDice} />
         </View>
       </View>
     );
