@@ -37,9 +37,18 @@ export default class DiceSet {
   }
   
   getDieProperty(id, property) {
+    // TODO validate property
     const die = this._dice.find(die => die.id === id);
     return die[property];
   }  
+
+  getDiceIds() {
+    const ids = [];
+    this._dice.forEach((die) => {
+      ids.push(die.id());
+    });
+    return ids;
+  }
 
   rollDice() {
     // TODO consider removing rolls array
