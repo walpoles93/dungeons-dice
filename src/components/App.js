@@ -92,7 +92,7 @@ class App extends React.Component {
     const setSelectors = diceSets.map(diceSet => (
       <Button
         key={diceSet.id}
-        title={diceSet.setName}
+        title={diceSet.name}
         onPress={e => this.handleClickSet(e, diceSet.id)}
         onLongPress={e => this.handleDeleteSet(e, diceSet.id)}
       />

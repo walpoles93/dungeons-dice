@@ -15,11 +15,11 @@ export default class DiceSet {
     return this._id;
   }
     
-  get setName() {
+  get name() {
     return this._name;
   }
 
-  set setName(name) {
+  set name(name) {
     this._name = name;
   }
 
