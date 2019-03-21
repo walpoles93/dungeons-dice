@@ -72,9 +72,7 @@ class App extends React.Component {
     
   render() {
     const activeSet = this.getActiveSet();
-    const { activeSetId, diceSets } = this.state;
-    const activeDice = this.getActiveSet().dice;
-    // const handlers = { handleAdd: this.handleAddDie, handleDelete: this.handleDeleteDie };
+    const { diceSets } = this.state;
     const setSelectors = diceSets.map(diceSet => (
       <Button
         key={diceSet.id}
