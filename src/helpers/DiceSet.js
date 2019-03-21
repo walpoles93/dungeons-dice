@@ -45,7 +45,7 @@ export default class DiceSet {
   getDiceIds() {
     const ids = [];
     this._dice.forEach((die) => {
-      ids.push(die.id());
+      ids.push(die.id);
     });
     return ids;
   }
