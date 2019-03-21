@@ -14,7 +14,7 @@ export default class DiceSet {
   get id() {
     return this._id;
   }
-    
+
   get name() {
     return this._name;
   }
@@ -26,7 +26,7 @@ export default class DiceSet {
   get dice() {
     return this._dice;
   }
-    
+
   addDie(sides, type) {
     // TODO validate parameters?
     this._dice.push(new Die(sides, type));
@@ -35,12 +35,12 @@ export default class DiceSet {
   removeDie(id) {
     this._dice = this._dice.filter(die => die.id !== id);
   }
-  
-  getDieProperty(id, property) {
+
+  getDieProperty(dieId, property) {
     // TODO validate property
-    const die = this._dice.find(die => die.id === id);
+    const die = this._dice.find(({ id }) => id === dieId);
     return die[property];
-  }  
+  }
 
   getDiceIds() {
     const ids = [];
@@ -58,16 +58,16 @@ export default class DiceSet {
     });
     return rolls;
   }
-    
+
   sumLastRolls() {
     // TODO ensure modifier is included
     let sum = 0;
     this._dice.forEach((die) => {
-      sum+= die.lastRoll();
+      sum += die.lastRoll();
     });
     return sum;
   }
-    
+
   validateConstructor() {
     if (typeof this._name !== 'string') {
       throw new TypeError('typeof _name must be string');

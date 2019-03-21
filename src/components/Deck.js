@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert, StyleSheet, View } from 'react-native';
@@ -49,15 +50,8 @@ const Deck = ({ set, update }) => {
 };
 
 Deck.propTypes = {
-  dice: PropTypes.arrayOf(PropTypes.object),
-  handleAdd: PropTypes.func,
-  handleDelete: PropTypes.func,
-};
-
-Deck.defaultProps = {
-  dice: [],
-  handleAdd: () => {},
-  handleDelete: () => {},
+  set: PropTypes.object.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 export default Deck;
