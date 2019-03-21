@@ -30,10 +30,6 @@ class App extends React.Component {
       ],
       activeSetId: null,
     };
-    this.handleRollDice = this.handleRollDice.bind(this);
-    this.handleClickSet = this.handleClickSet.bind(this);
-    this.handleAddSet = this.handleAddSet.bind(this);
-    this.handleDeleteSet = this.handleDeleteSet.bind(this);
   }
 
   componentWillMount() {
@@ -42,30 +38,30 @@ class App extends React.Component {
     this.setState({ activeSetId: id });
   }
 
-  handleRollDice(set) {
+  handleRollDice = (set) => {
     set.rollDice();
     this.forceUpdate();
   }
 
-  handleClickSet(e, id) {
+  handleClickSet = (e, id) => {
     this.setState({ activeSetId: id });
   }
 
-  handleAddSet() {
+  handleAddSet = () => {
     const { diceSets } = this.state;
     const newSets = diceSets.slice();
     newSets.push(new DiceSet());
     this.setState({ diceSets: newSets });
   }
 
-  handleDeleteSet(e, id) {
+  handleDeleteSet = (e, id) => {
     const { activeSetId, diceSets } = this.state;
     const newSets = diceSets.filter(diceSet => diceSet.id !== id);
     if (id === activeSetId) this.setState({ activeSetId: newSets[0].id });
     this.setState({ diceSets: newSets });
   }
 
-  getActiveSet() {
+  getActiveSet = () => {
       const { activeSetId, diceSets } = this.state;
       return diceSets.find(diceSet => diceSet.id === activeSetId);
   }
