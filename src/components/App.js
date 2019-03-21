@@ -43,7 +43,7 @@ class App extends React.Component {
     this.forceUpdate();
   }
 
-  handleClickSet = (e, id) => {
+  handleClickSet = (id) => {
     this.setState({ activeSetId: id });
   }
 
@@ -54,7 +54,7 @@ class App extends React.Component {
     this.setState({ diceSets: newSets });
   }
 
-  handleDeleteSet = (e, id) => {
+  handleDeleteSet = (id) => {
     const { activeSetId, diceSets } = this.state;
     const newSets = diceSets.filter(diceSet => diceSet.id !== id);
     if (id === activeSetId) this.setState({ activeSetId: newSets[0].id });
@@ -73,8 +73,8 @@ class App extends React.Component {
       <Button
         key={diceSet.id}
         title={diceSet.name}
-        onPress={e => this.handleClickSet(e, diceSet.id)}
-        onLongPress={e => this.handleDeleteSet(e, diceSet.id)}
+        onPress={() => this.handleClickSet(diceSet.id)}
+        onLongPress={() => this.handleDeleteSet(diceSet.id)}
       />
     ));
 
