@@ -30,8 +30,6 @@ class App extends React.Component {
       ],
       activeSetId: null,
     };
-    this.handleAddDie = this.handleAddDie.bind(this);
-    this.handleDeleteDie = this.handleDeleteDie.bind(this);
     this.handleRollDice = this.handleRollDice.bind(this);
     this.handleClickSet = this.handleClickSet.bind(this);
     this.handleAddSet = this.handleAddSet.bind(this);
@@ -42,18 +40,6 @@ class App extends React.Component {
     const { diceSets } = this.state;
     const { id } = diceSets[0];
     this.setState({ activeSetId: id });
-  }
-
-  handleAddDie() {
-    const set = this.getActiveSet();
-    set.addDie();
-    this.forceUpdate();
-  }
-
-  handleDeleteDie(e, id) {
-    const set = this.getActiveSet();
-    set.removeDie(id);
-    this.forceUpdate();
   }
 
   handleRollDice() {
@@ -88,7 +74,7 @@ class App extends React.Component {
   render() {
     const { activeSetId, diceSets } = this.state;
     const activeDice = this.getActiveSet().dice;
-    const handlers = { handleAdd: this.handleAddDie, handleDelete: this.handleDeleteDie };
+    // const handlers = { handleAdd: this.handleAddDie, handleDelete: this.handleDeleteDie };
     const setSelectors = diceSets.map(diceSet => (
       <Button
         key={diceSet.id}
@@ -105,7 +91,7 @@ class App extends React.Component {
           <Button title="Add Set" onPress={this.handleAddSet} />
         </View>
         <View style={styles.decks}>
-          <Deck set={this.getActiveSet()} {...handlers} />
+          <Deck set={this.getActiveSet()} update={this.forceUpdate} />
           <Button title="ROLL" onPress={this.handleRollDice} />
         </View>
       </View>

@@ -12,8 +12,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Deck = ({ set, handleAdd, handleDelete }) => {
+const Deck = ({ set, update }) => {
   const diceIds = set.getDiceIds();
+  const handleAddDie = () => {
+    set.addDie();
+    update();
+  };
+  const handleDeleteDie = (id) => {
+    set.removeDie(id);
+    update();
+  };
   // TODO call lastRoll through set - remove method and just use property?
   const cards = diceIds.map((id) => {
     const lastRoll = set.getDieProperty(id, 'lastRoll');
@@ -22,7 +30,7 @@ const Deck = ({ set, handleAdd, handleDelete }) => {
       <Card
         key={id}
         onPress={() => Alert.alert('Card pressed...')}
-        onLongPress={e => handleDelete(e, id)}
+        onLongPress={() => handleDeleteDie(id)}
       >
         <Card.Title text={set.getDieProperty(id, 'name')} />
         <Card.Content text={lastRoll || '-'} />
@@ -33,7 +41,7 @@ const Deck = ({ set, handleAdd, handleDelete }) => {
   return (
     <View style={styles.wrapper}>
       {cards}
-      <Card onPress={handleAdd}>
+      <Card onPress={handleAddDie}>
         <Card.Content text="+" />
       </Card>
     </View>
