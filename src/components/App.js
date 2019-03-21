@@ -32,7 +32,7 @@ class App extends React.Component {
     };
     this.handleAddDie = this.handleAddDie.bind(this);
     this.handleDeleteDie = this.handleDeleteDie.bind(this);
-    this.handleRollDie = this.handleRollDie.bind(this);
+    this.handleRollDice = this.handleRollDice.bind(this);
     this.handleClickSet = this.handleClickSet.bind(this);
     this.handleAddSet = this.handleAddSet.bind(this);
     this.handleDeleteSet = this.handleDeleteSet.bind(this);
@@ -105,7 +105,7 @@ class App extends React.Component {
           <Button title="Add Set" onPress={this.handleAddSet} />
         </View>
         <View style={styles.decks}>
-          <Deck dice={activeDice} {...handlers} />
+          <Deck set={this.getActiveSet()} {...handlers} />
           <Button title="ROLL" onPress={this.handleRollDice} />
         </View>
       </View>

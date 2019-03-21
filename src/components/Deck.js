@@ -21,9 +21,10 @@ const Deck = ({ set, handleAdd, handleDelete }) => {
       onPress={() => Alert.alert('Card pressed...')}
       onLongPress={e => handleDelete(e, id)}
     >
-      <Card.Title text={set.getDieProperty(id,name)} />
-      <Card.Content text={die.lastRoll() ? die.lastRoll() : '-'} />
-      <Card.Meta text={set.getDieProperty(id,type)} />
+      <Card.Title text={set.getDieProperty(id, 'name')} />
+      {/* <Card.Content text={die.lastRoll() ? die.lastRoll() : '-'} /> */}
+      <Card.Content text="Fix Me" />
+      <Card.Meta text={set.getDieProperty(id, 'type')} />
     </Card>
   ));
   return (
