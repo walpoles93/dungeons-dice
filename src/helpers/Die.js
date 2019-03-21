@@ -8,22 +8,13 @@ export default class Die {
     this.sides = sides;
     this.name = `d${sides}`;
     this.type = type;
-    this.rolls = [];
+    this.lastRoll = null;
     this.validateConstructor();
-    Object.freeze(this);
-  }
-
-  lastRoll() {
-    const { rolls } = this;
-    if (rolls.length === 0) {
-      return 0;
-    }
-    return rolls.slice(rolls.length - 1)[0];
   }
 
   roll() {
     const value = Math.floor(Math.random() * this.sides) + 1;
-    this.rolls.push(value);
+    this.lastRoll = value;
     return value;
   }
 
