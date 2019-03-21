@@ -42,8 +42,7 @@ class App extends React.Component {
     this.setState({ activeSetId: id });
   }
 
-  handleRollDice() {
-    const set = this.getActiveSet();
+  handleRollDice(set) {
     set.rollDice();
     this.forceUpdate();
   }
@@ -72,6 +71,7 @@ class App extends React.Component {
   }
     
   render() {
+    const activeSet = this.getActiveSet();
     const { activeSetId, diceSets } = this.state;
     const activeDice = this.getActiveSet().dice;
     // const handlers = { handleAdd: this.handleAddDie, handleDelete: this.handleDeleteDie };
@@ -91,8 +91,8 @@ class App extends React.Component {
           <Button title="Add Set" onPress={this.handleAddSet} />
         </View>
         <View style={styles.decks}>
-          <Deck set={this.getActiveSet()} update={this.forceUpdate} />
-          <Button title="ROLL" onPress={this.handleRollDice} />
+          <Deck set={activeSet} update={this.forceUpdate} />
+          <Button title="ROLL" onPress={() => this.handleRollDice(activeSet)} />
         </View>
       </View>
     );
