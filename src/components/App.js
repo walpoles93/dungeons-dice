@@ -85,7 +85,7 @@ class App extends React.Component {
           <Button title="Add Set" onPress={this.handleAddSet} />
         </View>
         <View style={styles.decks}>
-          <Deck set={activeSet} update={this.forceUpdate} />
+          <Deck set={activeSet} update={this.forceUpdate.bind(this)} />
           <Button title="ROLL" onPress={() => this.handleRollDice(activeSet)} />
         </View>
       </View>
